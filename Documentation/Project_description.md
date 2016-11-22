@@ -2,7 +2,7 @@
 
 ## Abstract
 This is an implementation of the social game **"Pictionary"**.
-The goal of the game is to get as many points as possible by quessing what the current player is drawing.
+The goal of the game is to get as many points as possible by guessing what the current player is drawing.
 
 ## Functionality
 * Allow users to create "rooms" for them and their friends
