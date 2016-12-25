@@ -1,0 +1,108 @@
+{{ define "content" }}
+{{ template "partials-navbar.html" }}
+  <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-2">
+      {{ template "partials-verticalmenu.html" }}
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <div id="shapesToolbar" class="btn-group" role="group">
+                <button id="freeDrawing" type="button" class="btn btn-default">Free Drawing Mode</button>
+                <button id="premadeShapes" type="button" class="btn btn-default">Premade Shapes</button>
+              </div>
+              <div class="btn-group">
+                <button id="undoItem" type="button" class="btn btn-default">Undo</button>
+                <button id="clearCanvas" type="button" class="btn btn-default">Clear Canvas</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div id="LineWidthSliderContainer" class="text-center">
+                <span>Line Width: </span><input id="lineWidthSlider" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body text-center">
+              <div id="lineType">
+                <label class="radio-inline"><input type="radio" name="optradio" value="Pencil" checked>Line</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="Spray">Spray</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="Circle">Circle</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="hline">h. Line</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="vline">v. Line</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="sqline">sq. Line</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div id="cp2" class="input-group colorpicker-component">
+                <input type="text" value="#00AABB" class="form-control" />
+                <span class="input-group-addon"><i></i></span>
+              </div>
+              <script>
+                  $(function() {
+                      $('#cp2').colorpicker();
+                  });
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Tools and Color row -->
+      <!-- Begin of Drawing Canvas -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <canvas id="myCanvas" height="500" width="1200" style="border:1px solid #000000;"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Drawing Canvas -->
+      <footer>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <select class="form-control">
+                  <option>Fish</option>
+                  <option>Cat</option>
+                  <option>Dog</option>
+                  <option>Elephant</option>
+                  <option>Eagle</option>
+                  <option>Pig</option>
+                  <option>Cow</option>
+                  <option>Zebra</option>
+                  <option>Octopus</option>
+                  <option>Tigar</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <button type="button" name="button" class="pull-right btn btn-primary">Submit drawing</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+{{ end }}
