@@ -1,6 +1,7 @@
 package main
 
 import (
+	"APS_Project/database"
 	"fmt"
 	"html/template"
 	"io"
@@ -8,6 +9,9 @@ import (
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 const STATIC_URL string = "/static/"
@@ -65,12 +69,27 @@ func StaticHandler(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 
+	// Open database connection
+	db, err := gorm.Open("mysql", "aps:password@/apsdb?charset=utf8&parseTime=True")
+	if err != nil {
+		log.Fatal("Could not connect to DB: ", err)
+	} else {
+		defer db.Close()
+	}
+
+	database.GlobalDB = db
+
+	log.Print("Connected to DB!")
+
+	db.LogMode(true)
+
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/login/", About)
 	http.HandleFunc(STATIC_URL, StaticHandler)
-	err := http.ListenAndServe(":8000", nil)
+	err = http.ListenAndServe(":8000", nil)
 	if err != nil {
-		log.Fatal("ListenAndServe: ", err)
+		log.Fatal("Error listening on port 8000: ", err)
 	}
 
+	log.Print("Listening on port 8000")
 }
